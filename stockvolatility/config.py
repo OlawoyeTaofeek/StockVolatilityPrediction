@@ -3,7 +3,7 @@ you can use your AlphaVantage API key in other parts of the application.
 """
 
 import os
-from pydantic_settings import BaseSettings as BS
+from pydantic_settings import BaseSettings 
 
 def return_full_path(filename: str = ".env") -> str:
     absolute_path = os.path.abspath(__file__)
@@ -11,7 +11,7 @@ def return_full_path(filename: str = ".env") -> str:
     full_path = os.path.join(directory_name, filename)
     return full_path
 
-class Settings(BS):
+class Settings(BaseSettings):
     alpha_vantage_api_key: str
     db_name: str
     model_directory: str
