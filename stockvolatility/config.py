@@ -1,5 +1,5 @@
-"""This module extracts information from your `.env` file so that
-you can use your AlphaVantage API key in other parts of the application.
+"""This module extracts information from the `.env` file so that
+I can use your AlphaVantage API key in other parts of the application.
 """
 
 import os
