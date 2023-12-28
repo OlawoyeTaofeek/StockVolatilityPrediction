@@ -3,7 +3,7 @@ I can use your AlphaVantage API key in other parts of the application.
 """
 
 import os
-from pydantic_settings import BaseSettings 
+from pydantic import BaseSettings 
 
 def return_full_path(filename: str = ".env") -> str:
     absolute_path = os.path.abspath(__file__)
@@ -18,10 +18,7 @@ class Settings(BaseSettings):
 
     class Config:
         env_file = return_full_path(".env")
+        protected_namespaces = ('settings_',)  # Add this line to resolve the naming conflict
 
 # Create an instance of the `Settings` class
 settings = Settings()
-
-
-
-
