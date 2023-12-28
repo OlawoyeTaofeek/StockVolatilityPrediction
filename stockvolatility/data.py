@@ -65,9 +65,8 @@ class AlphaVantageAPI:
 
 
 class SQLRepository:
-    def __init__():
-
-        pass
+    def __init__(self, connection):
+        self.connection = connection
 
     def insert_table():
     
