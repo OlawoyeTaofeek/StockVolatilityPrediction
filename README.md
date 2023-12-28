@@ -1,4 +1,4 @@
-# STOCK VOLATILITY PREDICTION USING GARCH
+# STOCK VOLATILITY PREDICTION USING GARCH AND XGBOOST
 
 First, I'll delve into the intricacies of stock data for two specific companies, leveraging the comprehensive AlphaVantage stock API. This exploration will involve gathering, analyzing, and understanding various facets of the financial information available.
 
