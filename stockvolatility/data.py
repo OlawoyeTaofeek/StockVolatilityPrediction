@@ -4,7 +4,6 @@ stored in the `.env` file and imported via the `config` module.
 """
 
 import sqlite3
-
 import pandas as pd
 import requests
 from config import settings    
@@ -12,9 +11,6 @@ from config import settings
 class AlphaVantageAPI:
     def __init__(self, api_key=settings.alpha_vantage_api_key):
         self.__api_key = api_key  # Just a way to make it a secret attribute, you can access it but won't appear when you do dir
-        self.ticker = None
-        self.output_size = None
-        self.data_type = None
 
     def get_daily(self, ticker, output_size="full", data_type="json"):
         self.ticker = ticker
@@ -68,7 +64,7 @@ class SQLRepository:
     def __init__(self, connection):
         self.connection = connection
 
-    def insert_table():
+    def insert_table(self, table_name, records, if_exists="fail"):
     
         """Insert DataFrame into SQLite database as table
 
@@ -93,10 +89,16 @@ class SQLRepository:
             - 'transaction_successful', followed by bool
             - 'records_inserted', followed by int
         """
+        n_inserted = records.to_sql(name=table_name, 
+                            con=self.connection, if_exists=if_exists)
+        return {
+            "transactional_successful": True,
+            "record_inserted": n_inserted
+        }
         
-        pass
+        
 
-    def read_table():
+    def read_table(self, table_name, limit=None):
     
         """Read table from database.
 
@@ -115,10 +117,14 @@ class SQLRepository:
             'low', 'close', and 'volume'. All columns are numeric.
         """
         # Create SQL query (with optional limit)
+        if limit:
+            query = f"SELECT FROM {table_name} LIMIT {limit}"
+        else:
+            query = f"SELECT FRON {table_name}"
         
 
         # Retrieve data, read into DataFrame
-        
-
+        df = pd.read_sql(sql=query, con=self.connection, parse_dates = ["Date"])
+        df.set_index("Date", inplace=True)
         # Return DataFrame
-        pass
+        return df
