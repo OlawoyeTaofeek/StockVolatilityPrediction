@@ -13,6 +13,24 @@ class AlphaVantageAPI:
         self.__api_key = api_key  # Just a way to make it a secret attribute, you can access it but won't appear when you do dir
 
     def get_daily(self, ticker, output_size="full", data_type="json"):
+        """Get daily time series of an equity from AlphaVantage API.
+
+        Parameters
+        ----------
+        ticker : str
+            The ticker symbol of the equity.
+        output_size : str, optional
+            Number of observations to retrieve. "compact" returns the
+            latest 100 observations. "full" returns all observations for
+            equity. By default "full".
+
+        Returns
+        -------
+        pd.DataFrame
+            Columns are 'open', 'high', 'low', 'close', and 'volume'.
+            All columns are numeric.
+        """
+        
         self.ticker = ticker
         self.output_size = output_size
         self.data_type = data_type
