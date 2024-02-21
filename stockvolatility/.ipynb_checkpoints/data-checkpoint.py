@@ -138,7 +138,7 @@ class SQLRepository:
         if limit:
             query = f"SELECT * FROM {table_name} LIMIT {limit}"
         else:
-            query = f"SELECT * FRON {table_name}"
+            query = f"SELECT * FROM {table_name}"
         
 
         # Retrieve data, read into DataFrame
