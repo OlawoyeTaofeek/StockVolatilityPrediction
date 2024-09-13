@@ -10,7 +10,7 @@ Finally, I'll transition to the deployment phase, where I take pride in creating
 
 Volatility models are used in econometrics and financial engineering. Also, this project uses time series data.
 
-Once you complete this project, you'll be able to:
+Once I am done with this project, I'll be able to:
 <ul>
     <li>Get data from a web API by making HTTP requests.</li>
     <li>Transform and load data to a SQL database using custom Python classes.</li>
